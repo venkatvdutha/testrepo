@@ -1,9 +1,9 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(name: 'Dataplane', defaultValue: true, description: 'Dataplane image'),
-        booleanParam(name: 'Controlplane', defaultValue: true, description: 'Controlplane image'),
-        booleanParam(name: 'Generic', defaultValue: true, description: 'Generic image'),
+        booleanParam(name: 'Dataplane', defaultValue: true, description: 'Dataplane image')
+        booleanParam(name: 'Controlplane', defaultValue: true, description: 'Controlplane image')
+        booleanParam(name: 'Generic', defaultValue: true, description: 'Generic image')
     }
     environment {
         JOB_HOME    = "ansible-packer-ami"
