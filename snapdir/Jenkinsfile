@@ -1,48 +1,38 @@
-{
+
 pipeline {
-  agent any
-   }
-  environment {
-      JOB_HOME    = "snapdir"
-  }
-  stages {
-    stage('Budiling AMI and sharing with PROD account.') {
-      steps {
-        sh '''#!/bin/bash -e
-#          cd ${JOB_HOME} || exit
-#          dp_image="dp"
-#          cp_image="cp"
-#          dp_ami_regions="us-west-2","eu-west-1","eu-west-2","ca-central-1","ap-south-1"
-#          cp_ami_regions="us-west-2","eu-west-1","us-east-1"
-#          packer validate packer-snapbase-ami-template.json
-          dp_image="dp"
-          echo "$dp_image" 
-          if [ ${App} == 'Dataplane' ]
-          then
-             echo "Dataplane"
+    agent any
+    parameters {
 
-          elif [ ${App} == 'generic' ]
-          then
-             echo "Generic image"
+        booleanParam(defaultValue: false, name: 'Dataplane', description: 'Dataplane'),
+        booleanParam(defaultValue: false, name: 'Controlplane', description: 'Controlplane'),
+        booleanParam(defaultValue: false, name: 'Generic', description: 'Generic'),
+    }
+    environment {
+       JOB_HOME    = "ansible-packer-ami"
+       }
+    stages {
+        stage('Budiling AMI and sharing with PROD account.') {
+            steps {
+              sh '''#!/bin/bash -e
+                cd ${JOB_HOME} || exit
+                
 
+                dp_image="dp"
+                echo "$dp_image" 
+                if [ ${App} == 'Dataplane' ]
+                then
+                   echo "Dataplane"
 
+                elif [ ${App} == 'generic' ]
+                then
+                   echo "Generic image"
 
-#             export plane_prefix="dp"
-#             packer build -color=false -var="App=${App}" -var="ami_regions1=$dp_ami_regions" packer-snapbase-ami-template.json
-          elif [ ${App} == 'Controlplane' ]
-          then
-             echo "Controlplane"
-#             eplane_prefix="cp"
-#             packer build -color=false -var="App=${App}" -var="app_image=$cp_image" -var="ami_regions1=$cp_ami_regions" packer-snapbase-ami-template.json
-          fi
-          '''
+                elif [ ${App} == 'Controlplane' ]
+                then
+                   echo "Controlplane"
+                fi
+                 '''
+            }
         }
     }
-  }
-  post {
-    always {
-      cleanWs()
-    }
-  }
-
 }
