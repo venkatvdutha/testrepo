@@ -1,4 +1,4 @@
-#def apps = ['Dataplane', 'Controlplane', 'generic']
+!#def apps = ['Dataplane', 'Controlplane', 'generic']
 
 pipeline {
   agent any
