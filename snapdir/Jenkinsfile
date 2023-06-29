@@ -1,4 +1,4 @@
-def apps = ['Dataplane', 'Controlplane', 'eneric']
+def apps = ['Dataplane', 'Controlplane', 'generic']
 
 pipeline {
   agent any
@@ -24,7 +24,7 @@ pipeline {
           then
              echo "Dataplane"
 
-          else [ ${App} == 'generic' ]
+          elif [ ${App} == 'generic' ]
           then
              echo "Generic image"
 
