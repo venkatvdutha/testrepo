@@ -32,7 +32,7 @@ pipeline {
 
 #             export plane_prefix="dp"
 #             packer build -color=false -var="App=${App}" -var="ami_regions1=$dp_ami_regions" packer-snapbase-ami-template.json
-          else [ ${App} == 'Controlplane' ]
+          elif [ ${App} == 'Controlplane' ]
           then
              echo "Controlplane"
 #             eplane_prefix="cp"
