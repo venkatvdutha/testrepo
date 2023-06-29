@@ -2,7 +2,7 @@ def apps = ['Dataplane', 'Controlplane', 'Generic']
 pipeline {
     agent any
     parameters {
-        booleanParam(defaultValue: false, name: 'Dataplane', description: 'Dataplane image'),
+        booleanParam{defaultValue: false, name: 'Dataplane', description: 'Dataplane image'},
         booleanParam(defaultValue: false, name: 'Controlplane', description: 'Controlplane image'),
         booleanParam(defaultValue: false, name: 'Generic', description: 'Generic image'),
     }
