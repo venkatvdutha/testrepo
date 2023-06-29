@@ -1,10 +1,10 @@
-def apps = ['Dataplane', 'Controlplane', 'generic']
+#def apps = ['Dataplane', 'Controlplane', 'generic']
 
 pipeline {
   agent any
-  parameters {
-    choice(name: 'App', choices: apps, description: 'Select App Name')
-   }
+#  parameters {
+#    choice(name: 'App', choices: apps, description: 'Select App Name')
+#   }
   environment {
       JOB_HOME    = "snapdir"
   }
