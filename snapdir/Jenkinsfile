@@ -15,7 +15,7 @@ pipeline {
                 cd ${JOB_HOME} || exit
                 dp_image="dp"
                 echo "$dp_image" 
-                if [[ ${params.name} -eq Dataplane ]]
+                if [[ ${params.Dataplane} -eq Dataplane ]]
                 then
                    echo "HELLLLLLLLLLLLLO"
 
