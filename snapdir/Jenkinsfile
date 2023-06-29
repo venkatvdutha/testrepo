@@ -15,7 +15,7 @@ pipeline {
                 cd ${JOB_HOME} || exit
                 dp_image="dp"
                 echo "$dp_image" 
-                if [ ${params.name} == 'Dataplane' ]
+                if [ ${params.Dataplane} == 'Dataplane' ]
                 then
                    echo "Dataplane: ${params.Dataplane}"
 
