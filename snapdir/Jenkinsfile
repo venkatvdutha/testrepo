@@ -2,35 +2,32 @@ def apps = ['Dataplane', 'Controlplane', 'Generic']
 pipeline {
     agent any
     parameters {
-
         booleanParam(defaultValue: false, name: 'Dataplane', description: 'Dataplane'),
         booleanParam(defaultValue: false, name: 'Controlplane', description: 'Controlplane'),
         booleanParam(defaultValue: false, name: 'Generic', description: 'Generic'),
     }
     environment {
-       JOB_HOME    = "ansible-packer-ami"
+        JOB_HOME    = "ansible-packer-ami"
        }
     stages {
         stage('Budiling AMI and sharing with PROD account.') {
             steps {
               sh '''#!/bin/bash -e
                 cd ${JOB_HOME} || exit
-                
-
                 dp_image="dp"
                 echo "$dp_image" 
-                if [ ${App} == 'Dataplane' ]
-                then
-                   echo "Dataplane"
-
-                elif [ ${App} == 'generic' ]
-                then
-                   echo "Generic image"
-
-                elif [ ${App} == 'Controlplane' ]
-                then
-                   echo "Controlplane"
-                fi
+#                if [ ${App} == 'Dataplane' ]
+#                then
+#                   echo "Dataplane: ${params.Dataplane}"
+#
+#                elif [ ${App} == 'generic' ]
+#                then
+#                   echo "Generic image"
+#
+#                elif [ ${App} == 'Controlplane' ]
+#                then
+#                   echo "Controlplane"
+#                fi
                  '''
             }
         }
