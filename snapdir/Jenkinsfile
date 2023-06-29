@@ -19,11 +19,11 @@ pipeline {
                 then
                    echo "Dataplane: ${params.Dataplane}"
 
-                elif [ ${params.name} == 'generic' ]
+                elif [[ ${name} == 'generic' ]]
                 then
                    echo "Generic image"
 
-                elif [ ${params.name} == 'Controlplane' ]
+                elif [[ ${name} == 'Controlplane' ]]
                 then
                    echo "Controlplane"
                 fi
