@@ -24,7 +24,7 @@ pipeline {
           then
              echo "Dataplane"
 
-          else [ ${App} == 'Generic' ]
+          elif [ ${App} == 'Generic' ]
           then
              echo "Generic image"
 
@@ -32,7 +32,7 @@ pipeline {
 
 #             export plane_prefix="dp"
 #             packer build -color=false -var="App=${App}" -var="ami_regions1=$dp_ami_regions" packer-snapbase-ami-template.json
-          elif [ ${App} == 'Controlplane' ]
+          else [ ${App} == 'Controlplane' ]
           then
              echo "Controlplane"
 #             eplane_prefix="cp"
