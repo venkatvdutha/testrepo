@@ -19,7 +19,7 @@ pipeline {
 #          cp_ami_regions="us-west-2","eu-west-1","us-east-1"
 #          packer validate packer-snapbase-ami-template.json
           dp_image="dp"
-          echo "$dp" 
+          echo "$dp_image" 
           if [ ${App} == 'Dataplane' ]
           then
              echo "Dataplane"
