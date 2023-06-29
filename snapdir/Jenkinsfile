@@ -24,7 +24,7 @@ pipeline {
           then
              echo "Dataplane"
 
-          elif [ ${App} == 'Generic' ]
+          else [ ${App} == 'Generic' ]
           then
              echo "Generic image"
 
