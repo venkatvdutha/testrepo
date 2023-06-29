@@ -1,4 +1,3 @@
-# def apps = ['Dataplane', 'Controlplane', 'Generic']
 pipeline {
     agent any
     parameters {
