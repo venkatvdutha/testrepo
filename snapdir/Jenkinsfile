@@ -6,7 +6,7 @@ pipeline {
     choice(name: 'App', choices: apps, description: 'Select App Name')
    }
   environment {
-      JOB_HOME    = "ansible-packer-ami"
+      JOB_HOME    = "snapdir"
   }
   stages {
     stage('Budiling AMI and sharing with PROD account.') {
