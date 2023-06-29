@@ -1,12 +1,12 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(name: 'Dataplane', defaultValue: true, description: 'Dataplane image')
-        booleanParam(name: 'Controlplane', defaultValue: true, description: 'Controlplane image')
-        booleanParam(name: 'Generic', defaultValue: true, description: 'Generic image')
+        booleanParam(name: 'Dataplane', defaultValue: false, description: 'Dataplane image')
+        booleanParam(name: 'Controlplane', defaultValue: false, description: 'Controlplane image')
+        booleanParam(name: 'Generic', defaultValue: false, description: 'Generic image')
     }
     environment {
-        JOB_HOME    = "ansible-packer-ami"
+        JOB_HOME    = "snapdir"
        }
     stages {
         stage('Budiling AMI and sharing with PROD account.') {
@@ -15,18 +15,18 @@ pipeline {
                 cd ${JOB_HOME} || exit
                 dp_image="dp"
                 echo "$dp_image" 
-#                if [ ${App} == 'Dataplane' ]
-#                then
-#                   echo "Dataplane: ${params.Dataplane}"
-#
-#                elif [ ${App} == 'generic' ]
-#                then
-#                   echo "Generic image"
-#
-#                elif [ ${App} == 'Controlplane' ]
-#                then
-#                   echo "Controlplane"
-#                fi
+                if [ ${App} == 'Dataplane' ]
+                then
+                   echo "Dataplane: ${params.Dataplane}"
+
+                elif [ ${App} == 'generic' ]
+                then
+                   echo "Generic image"
+
+                elif [ ${App} == 'Controlplane' ]
+                then
+                   echo "Controlplane"
+                fi
                  '''
             }
         }
