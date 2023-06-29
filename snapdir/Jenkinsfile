@@ -17,7 +17,7 @@ pipeline {
                 echo "$dp_image" 
                 if [[ ${name} == "Dataplane" ]]
                 then
-                   echo "Dataplane: ${params.Dataplane}"
+                   echo "Dataplane"
 
                 elif [[ ${name} == 'generic' ]]
                 then
