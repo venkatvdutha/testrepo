@@ -1,4 +1,4 @@
-def apps = ['Dataplane', 'Controlplane']
+def apps = ['Dataplane', 'Controlplane', 'generic']
 
 pipeline {
   agent any
@@ -23,6 +23,13 @@ pipeline {
           if [ ${App} == 'Dataplane' ]
           then
              echo "Dataplane"
+
+          elif [ ${App} == 'Generic' ]
+          then
+             echo "Generic image"
+
+
+
 #             export plane_prefix="dp"
 #             packer build -color=false -var="App=${App}" -var="ami_regions1=$dp_ami_regions" packer-snapbase-ami-template.json
           elif [ ${App} == 'Controlplane' ]
