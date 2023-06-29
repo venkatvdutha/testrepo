@@ -15,9 +15,9 @@ pipeline {
                 cd ${JOB_HOME} || exit
                 dp_image="dp"
                 echo "$dp_image" 
-                if [ "$params.name" == "Dataplane" ]
+                if [[ $params.name -eq Dataplane ]]
                 then
-                   echo "Dataplane"
+                   echo "HELLLLLLLLLLLLLO"
 
                 elif [[ ${name} == 'generic' ]]
                 then
