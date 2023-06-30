@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'Dataplane', defaultValue: true, description: 'Dataplane image')
+        booleanParam(name: 'Controlplane', defaultValue: true, description: 'Controlplane image')
+        booleanParam(name: 'Generic', defaultValue: true, description: 'Generic image')
+    }
+    environment {
+        JOB_HOME    = "snapdir"
+       }
+    stages {
+        stage('Budiling AMI and sharing with PROD account.') {
+            steps {
+              sh '''#!/bin/bash -e
+                cd ${JOB_HOME} || exit
+                dp_image="dp"
+                echo "$dp_image" 
+                if [[${params.Dataplane} == true]]
+                then
+                   echo "HELLLLLLLLLLLLLO"
+
+                elif [[ ${params.Generic} == true ]]
+                then
+                   echo "Generic image"
+
+                elif [[ ${params.Controlplane} == true ]]
+                then
+                   echo "Controlplane"
+                fi
+                 '''
+            }
+        }
+    }
+}

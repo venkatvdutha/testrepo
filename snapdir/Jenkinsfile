@@ -6,28 +6,20 @@ pipeline {
         booleanParam(name: 'Generic', defaultValue: true, description: 'Generic image')
     }
     environment {
-        JOB_HOME    = "snapdir"
-       }
+        JOB_HOME = "snapdir"
+    }
     stages {
-        stage('Budiling AMI and sharing with PROD account.') {
+        stage('Building AMI and sharing with PROD account.') {
             steps {
-              sh '''#!/bin/bash -e
-                cd ${JOB_HOME} || exit
-                dp_image="dp"
-                echo "$dp_image" 
-                if [[${params.Dataplane} == true]]
-                then
-                   echo "HELLLLLLLLLLLLLO"
-
-                elif [[ ${params.Generic} == true ]]
-                then
-                   echo "Generic image"
-
-                elif [[ ${params.Controlplane} == true ]]
-                then
-                   echo "Controlplane"
-                fi
-                 '''
+                script {
+                    if (params.Dataplane) {
+                        echo "Dataplane image"
+                    } else if (params.Generic) {
+                        echo "Generic image"
+                    } else if (params.Controlplane) {
+                        echo "Controlplane"
+                    }
+                }
             }
         }
     }
