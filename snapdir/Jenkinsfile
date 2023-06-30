@@ -19,7 +19,7 @@ pipeline {
 		    elif [ ${params.name} == 'Controlplane' ]
                     then
                         echo "conrol plane"
-                    } 
+                     
 		    elif [ ${params.name} == 'Generic' ]
                     then 
                        echo "Generic"
