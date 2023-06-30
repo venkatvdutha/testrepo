@@ -15,15 +15,15 @@ pipeline {
                 cd ${JOB_HOME} || exit
                 dp_image="dp"
                 echo "$dp_image" 
-                if [[ ${params.Dataplane} -eq Dataplane ]]
+                if [[ ${params.Dataplane} == true ]]
                 then
                    echo "HELLLLLLLLLLLLLO"
 
-                elif [[ ${name} == 'generic' ]]
+                elif [[ ${params.Generic} == true ]]
                 then
                    echo "Generic image"
 
-                elif [[ ${name} == 'Controlplane' ]]
+                elif [[ ${params.Controlplane} == true ]]
                 then
                    echo "Controlplane"
                 fi
