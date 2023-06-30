@@ -14,9 +14,11 @@ pipeline {
                 script {
                     if (params.Dataplane) {
                         echo "Dataplane image"
-                    } else if (params.Generic) {
+                    } 
+		    if (params.Generic) {
                         echo "Generic image"
-                    } else {
+                    } 
+		    if (params.Controlplane) {
                         echo "Controlplane"
                     }
                 }
