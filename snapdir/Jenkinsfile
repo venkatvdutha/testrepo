@@ -13,11 +13,9 @@ pipeline {
             steps {
                 script {  
                   if (params.Dataplane) { 
-                  then
                     echo "Dataplane image"
                      
-		 } else if (params.Controlplane) {
-                   then
+		 } else (params.Controlplane) {
                       echo "conrol plane"
                  }
                
