@@ -16,16 +16,12 @@ pipeline {
                     then
                         echo "Dataplane image"
                      
-		    } elif (params.Controlplane) {
+		    } else (params.Controlplane) {
                     then
                         echo "conrol plane"
-                     
-		    } elif (params.Generic) {
-                    then 
-                       echo "Generic"
                     }
                   '''  
-                }
+           }
         }
     }
 }
