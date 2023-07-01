@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Building AMI and sharing with PROD account.') {
             steps {
-                sh '''#!/bin/bash -e  
+                script {  
                   if (params.Dataplane) { 
                   then
                     echo "Dataplane image"
@@ -20,8 +20,9 @@ pipeline {
                    then
                       echo "conrol plane"
                  }
-                  '''  
+               
            }
         }
     }
+}
 }
