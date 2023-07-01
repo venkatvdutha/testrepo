@@ -16,7 +16,7 @@ pipeline {
                   then
                     echo "Dataplane image"
                      
-		 } else (params.Controlplane) {
+		 } else if (params.Controlplane) {
                    then
                       echo "conrol plane"
                  }
