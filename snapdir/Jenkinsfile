@@ -12,21 +12,20 @@ pipeline {
         stage('Building AMI and sharing with PROD account.') {
             steps {
                sh '''#!/bin/bash -e  
-                    if [ $params.name == 'Dataplane' ] 
+                    if (params.Dataplane) { 
                     then
                         echo "Dataplane image"
                      
-		    elif [ ${params.name} == 'Controlplane' ]
+		    } elif (params.Controlplane) {
                     then
                         echo "conrol plane"
                      
-		    elif [ ${params.name} == 'Generic' ]
+		    } elif (params.Generic) {
                     then 
                        echo "Generic"
-                    fi
+                    }
                   '''  
                 }
-            }
         }
     }
-
+}
