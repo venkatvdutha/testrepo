@@ -13,7 +13,7 @@ pipeline {
                   if (params.Dataplane) { 
                     echo "Dataplane image"
                      
-		 } else (params.Controlplane) {
+		 } if (params.Controlplane) {
                       echo "conrol plane"
                  }
                
